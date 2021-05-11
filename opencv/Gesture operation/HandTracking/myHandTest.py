@@ -7,11 +7,12 @@ def main():
 
     pTime = 0
     cTime = 0
-    # cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(0)
     # 调用ip摄像头
-    video = "http://admin:admin@192.168.1.108:8081/"
-    cap = cv2.VideoCapture(video)
-    detector = htm.handDectector()
+    # video = "http://admin:admin@192.168.1.108:8081/"
+    # cap = cv2.VideoCapture(video)
+
+    detector = htm.handDetector()
     while True:
         success, img = cap.read()
         img = detector.findHands(img)
@@ -25,12 +26,8 @@ def main():
         cv2.putText(img, 'FPS:' + str(round(fps)), (10, 70), cv2.FONT_HERSHEY_PLAIN,
                     3, (0, 0, 255), 3)
 
-
         cv2.imshow("Image", img)
         cv2.waitKey(1)
-
-
-
 
 
 if __name__ == '__main__':
